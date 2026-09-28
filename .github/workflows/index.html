@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Civil Defence and Emergency Management Agency</title>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #c7ccd1;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        color: #222;
+    }
+
+    body {
+        background-image:
+            linear-gradient(#dfe3e7 1px, transparent 1px);
+        background-size: 100% 18px;
+    }
+
+    a {
+        color: #003399;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: #cc0000;
+    }
+
+    #page {
+        width: 760px;
+        margin: 10px auto;
+        background: #fff;
+        border: 1px solid #555;
+        box-shadow: 2px 2px 5px #777;
+    }
+
+    /* HEADER */
+    #header {
+        height: 91px;
+        background: linear-gradient(#eeeeee, #bfc3c7);
+        border-bottom: 1px solid #555;
+        position: relative;
+    }
+
+    #logo {
+        position: absolute;
+        left: 14px;
+        top: 12px;
+        width: 68px;
+        height: 68px;
+        background: #d71920;
+        border: 2px solid #8b0000;
+        box-shadow: inset 2px 2px 0 #ff6b6b, inset -2px -2px 0 #680000;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: 29px;
+        line-height: 68px;
+    }
+
+    #agency-name {
+        position: absolute;
+        left: 96px;
+        top: 17px;
+        color: #333;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    #agency-subtitle {
+        position: absolute;
+        left: 98px;
+        top: 48px;
+        font-size: 11px;
+        color: #555;
+    }
+
+    #emergency-number {
+        position: absolute;
+        right: 13px;
+        top: 13px;
+        width: 120px;
+        background: #fff;
+        border: 1px solid #777;
+        text-align: center;
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    #emergency-number strong {
+        display: block;
+        color: #c40000;
+        font-size: 18px;
+    }
+
+    /* TOP NAV */
+    #topnav {
+        background: #003b70;
+        border-bottom: 3px solid #777;
+        height: 27px;
+        overflow: hidden;
+    }
+
+    #topnav a {
+        display: inline-block;
+        color: white;
+        text-decoration: none;
+        padding: 6px 13px;
+        border-right: 1px solid #6685a0;
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    #topnav a:hover {
+        background: #d71920;
+        color: white;
+    }
+
+    /* MARQUEE */
+    #notice {
+        background: #fff3a6;
+        border-bottom: 1px solid #aaa;
+        height: 22px;
+        line-height: 22px;
+        overflow: hidden;
+        color: #333;
+        font-size: 10px;
+    }
+
+    #notice strong {
+        background: #d71920;
+        color: white;
+        padding: 5px 9px;
+        margin-right: 8px;
+    }
+
+    /* MAIN */
+    #content {
+        padding: 9px;
+    }
+
+    #columns {
+        display: table;
+        width: 100%;
+    }
+
+    #left {
+        display: table-cell;
+        width: 170px;
+        vertical-align: top;
+        padding-right: 9px;
+    }
+
+    #middle {
+        display: table-cell;
+        width: 365px;
+        vertical-align: top;
+        padding-right: 9px;
+    }
+
+    #right {
+        display: table-cell;
+        width: 170px;
+        vertical-align: top;
+    }
+
+    /* BOXES */
+    .box {
+        border: 1px solid #777;
+        margin-bottom: 10px;
+        background: #f8f8f8;
+    }
+
+    .box-title {
+        background: linear-gradient(#eeeeee, #c7c7c7);
+        border-bottom: 1px solid #777;
+        padding: 5px 6px;
+        font-weight: bold;
+        color: #003b70;
+        font-size: 11px;
+    }
+
+    .box-body {
+        padding: 7px;
+    }
+
+    .box-body ul {
+        margin: 3px 0 3px 17px;
+        padding: 0;
+    }
+
+    .box-body li {
+        margin-bottom: 5px;
+    }
+
+    /* WELCOME */
+    #welcome {
+        border: 1px solid #777;
+        background: #f1f1f1;
+        padding: 9px;
+        margin-bottom: 10px;
+    }
+
+    #welcome h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 20px;
+        color: #003b70;
+        margin: 0 0 6px 0;
+    }
+
+    #welcome p {
+        line-height: 1.45;
+        margin: 5px 0;
+    }
+
+    /* ALERT */
+    .alert {
+        border: 2px solid #990000;
+        background: #fff0f0;
+        margin-bottom: 10px;
+    }
+
+    .alert-header {
+        background: #cc0000;
+        color: white;
+        padding: 5px 7px;
+        font-weight: bold;
+        font-size: 11px;
+    }
+
+    .alert-body {
+        padding: 8px;
+    }
+
+    .alert-body strong {
+        color: #990000;
+    }
+
+    /* QUICK BUTTONS */
+    .quick-button {
+        display: block;
+        margin: 5px 0;
+        padding: 6px;
+        background: linear-gradient(#ffffff, #d5d5d5);
+        border: 1px solid #777;
+        border-top-color: #eee;
+        border-left-color: #eee;
+        color: #003399;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    .quick-button:active {
+        border-top-color: #777;
+        border-left-color: #777;
+        border-bottom-color: #eee;
+        border-right-color: #eee;
+    }
+
+    /* SEARCH */
+    #search {
+        background: #e8edf2;
+        border: 1px solid #777;
+        padding: 7px;
+        margin-bottom: 10px;
+    }
+
+    #search input {
+        width: 115px;
+        height: 17px;
+        border: 1px solid #777;
+        font-size: 10px;
+    }
+
+    #search button {
+        height: 21px;
+        font-size: 10px;
+    }
+
+    /* NEWS */
+    .news-item {
+        border-bottom: 1px dotted #999;
+        padding: 6px 2px;
+    }
+
+    .news-date {
+        color: #777;
+        font-size: 9px;
+    }
+
+    .news-item a {
+        font-weight: bold;
+    }
+
+    /* WEATHER */
+    .weather {
+        text-align: center;
+        background: #e7f2fb;
+        border: 1px solid #7c9db7;
+        padding: 8px;
+    }
+
+    .weather-temp {
+        font-size: 20px;
+        font-weight: bold;
+        color: #003b70;
+    }
+
+    /* TABLE */
+    table.info {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 10px;
+    }
+
+    table.info td {
+        border: 1px solid #aaa;
+        padding: 4px;
+    }
+
+    table.info td:first-child {
+        background: #e4e4e4;
+        font-weight: bold;
+        width: 45%;
+    }
+
+    /* FOOTER */
+    #footer {
+        border-top: 4px solid #003b70;
+        background: #dedede;
+        padding: 10px;
+        text-align: center;
+        color: #555;
+        font-size: 9px;
+        line-height: 1.5;
+    }
+
+    #footer-links {
+        margin-bottom: 7px;
+    }
+
+    #footer a {
+        margin: 0 7px;
+    }
+
+    .updated {
+        color: #777;
+        font-size: 9px;
+        margin-top: 6px;
+    }
+
+    /* ACCESSIBILITY BAR */
+    #accessibility {
+        background: #eeeeee;
+        border-bottom: 1px solid #aaa;
+        padding: 4px 8px;
+        text-align: right;
+        font-size: 9px;
+    }
+
+    /* OLD INTERNET EXPLORER FEEL */
+    .ie-warning {
+        background: #ffffcc;
+        border: 1px solid #999;
+        padding: 5px;
+        font-size: 9px;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 780px) {
+        #page {
+            width: 98%;
+        }
+
+        #columns {
+            display: block;
+        }
+
+        #left,
+        #middle,
+        #right {
+            display: block;
+            width: auto;
+            padding: 0;
+        }
+
+        #right {
+            margin-top: 10px;
+        }
+
+        #emergency-number {
+            display: none;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="page">
+
+    <div id="accessibility">
+        <a href="#">Skip to main content</a> |
+        <a href="#">Text only version</a> |
+        <a href="#">Accessibility</a>
+    </div>
+
+    <header id="header">
+
+        <div id="logo">CD</div>
+
+        <div id="agency-name">
+            Civil Defence and Emergency Management Agency
+        </div>
+
+        <div id="agency-subtitle">
+            National emergency management information service
+        </div>
+
+        <div id="emergency-number">
+            Emergency
+            <strong>111</strong>
+            Police &nbsp; Fire &nbsp; Ambulance
+        </div>
+
+    </header>
+
+    <nav id="topnav">
+        <a href="#">HOME</a>
+        <a href="#">ABOUT US</a>
+        <a href="#">EMERGENCIES</a>
+        <a href="#">BE PREPARED</a>
+        <a href="#">NEWS</a>
+        <a href="#">CONTACT US</a>
+    </nav>
+
+    <div id="notice">
+        <strong>IMPORTANT</strong>
+        <marquee scrollamount="4">
+            Check this page regularly for Civil Defence warnings and emergency information.
+        </marquee>
+    </div>
+
+    <main id="content">
+
+        <div class="ie-warning">
+            <strong>NOTICE:</strong>
+            This website is best viewed using Internet Explorer 6.0 or later at a screen
+            resolution of 800 x 600 pixels.
+        </div>
+
+        <div id="columns">
+
+            <!-- LEFT COLUMN -->
+            <aside id="left">
+
+                <div class="box">
+                    <div class="box-title">Emergency Information</div>
+                    <div class="box-body">
+
+                        <a href="#" class="quick-button">EARTHQUAKES</a>
+                        <a href="#" class="quick-button">TSUNAMIS</a>
+                        <a href="#" class="quick-button">FLOODS</a>
+                        <a href="#" class="quick-button">STORMS</a>
+                        <a href="#" class="quick-button">VOLCANIC ACTIVITY</a>
+                        <a href="#" class="quick-button">FIRES</a>
+                        <a href="#" class="quick-button">OTHER EMERGENCIES</a>
+
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-title">Be Prepared</div>
+                    <div class="box-body">
+                        <ul>
+                            <li><a href="#">Make a Household Plan</a></li>
+                            <li><a href="#">Emergency Supplies</a></li>
+                            <li><a href="#">Emergency Water</a></li>
+                            <li><a href="#">Pets and Animals</a></li>
+                            <li><a href="#">Emergency Radio</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-title">Related Sites</div>
+                    <div class="box-body">
+                        <a href="#">Police</a><br><br>
+                        <a href="#">Fire and Emergency</a><br><br>
+                        <a href="#">MetService</a><br><br>
+                        <a href="#">Ministry of Health</a><br><br>
+                        <a href="#">Local Authorities</a>
+                    </div>
+                </div>
+
+            </aside>
+
+
+            <!-- MIDDLE COLUMN -->
+            <section id="middle">
+
+                <div id="welcome">
+                    <h1>Welcome to Civil Defence</h1>
+
+                    <p>
+                        Welcome to the official website of the Civil Defence and
+                        Emergency Management Agency.
+                    </p>
+
+                    <p>
+                        Our role is to help communities prepare for, respond to,
+                        and recover from emergencies.
+                    </p>
+
+                    <p>
+                        <strong>Find out what you can do before an emergency happens.</strong>
+                    </p>
+
+                    <p>
+                        <a href="#">» Get prepared today</a>
+                    </p>
+                </div>
+
+
+                <div class="alert">
+                    <div class="alert-header">
+                        CURRENT EMERGENCY INFORMATION
+                    </div>
+
+                    <div class="alert-body">
+                        <strong>No national emergency warnings are currently in effect.</strong>
+
+                        <p>
+                            Please check your local Civil Defence Emergency Management
+                            Group for information relating to your area.
+                        </p>
+
+                        <a href="#">View current warnings and advisories »</a>
+                    </div>
+                </div>
+
+
+                <div class="box">
+                    <div class="box-title">Latest News</div>
+
+                    <div class="box-body">
+
+                        <div class="news-item">
+                            <div class="news-date">15 September 2004</div>
+                            <a href="#">New emergency preparedness campaign launched</a>
+                            <br>
+                            Communities throughout the country are being encouraged
+                            to prepare for emergencies.
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">08 September 2004</div>
+                            <a href="#">National Emergency Exercise announced</a>
+                            <br>
+                            Government agencies and local authorities will participate
+                            in a national exercise.
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">29 August 2004</div>
+                            <a href="#">New public information resources available</a>
+                            <br>
+                            Emergency planning brochures are now available online.
+                        </div>
+
+                        <div class="news-item">
+                            <a href="#">View all news and media releases »</a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="box">
+                    <div class="box-title">Emergency Management Information</div>
+
+                    <div class="box-body">
+
+                        <table class="info">
+                            <tr>
+                                <td>Emergency Number</td>
+                                <td><strong>111</strong></td>
+                            </tr>
+                            <tr>
+                                <td>National Agency</td>
+                                <td>CDEM Agency</td>
+                            </tr>
+                            <tr>
+                                <td>Emergency Radio</td>
+                                <td>Listen to your local station</td>
+                            </tr>
+                            <tr>
+                                <td>Information</td>
+                                <td><a href="#">www.civildefence.gov.sc</a></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT COLUMN -->
+            <aside id="right">
+
+                <div id="search">
+
+                    <strong>Search this site</strong>
+
+                    <form>
+                        <input type="text" name="q">
+                        <button type="submit">Search</button>
+                    </form>
+
+                    <div style="margin-top:5px;">
+                        <a href="#">Advanced search</a>
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+                    <div class="box-title">Quick Links</div>
+
+                    <div class="box-body">
+                        <a href="#">Emergency Warnings</a><br><br>
+                        <a href="#">Local Civil Defence</a><br><br>
+                        <a href="#">Emergency Management</a><br><br>
+                        <a href="#">Publications</a><br><br>
+                        <a href="#">Forms & Downloads</a><br><br>
+                        <a href="#">Media Centre</a><br><br>
+                        <a href="#">Frequently Asked Questions</a>
+                    </div>
+                </div>
+
+
+                <div class="box">
+
+                    <div class="box-title">Local Weather</div>
+
+                    <div class="box-body">
+
+                        <div class="weather">
+
+                            <strong>Masterton</strong>
+
+                            <div style="font-size:24px;margin:5px;">
+                                ☁
+                            </div>
+
+                            <div class="weather-temp">
+                                16°C
+                            </div>
+
+                            <div>
+                                Cloudy
+                            </div>
+
+                            <div style="margin-top:7px;">
+                                <a href="#">Full forecast »</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+
+                    <div class="box-title">Did You Know?</div>
+
+                    <div class="box-body">
+
+                        You should have enough emergency
+                        supplies to last your household for
+                        <strong>at least three days</strong>.
+
+                        <br><br>
+
+                        <a href="#">Find out what to store »</a>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <footer id="footer">
+
+        <div id="footer-links">
+            <a href="#">Home</a> |
+            <a href="#">About this site</a> |
+            <a href="#">Privacy</a> |
+            <a href="#">Copyright</a> |
+            <a href="#">Disclaimer</a> |
+            <a href="#">Contact us</a> |
+            <a href="#">Site map</a>
+        </div>
+
+        <div>
+            Civil Defence and Emergency Management Agency
+            <br>
+            Government of Square Country
+        </div>
+
+        <div class="updated">
+            Page last updated: 15 September 2004
+            <br>
+            Website version 1.4
+        </div>
+
+        <br>
+
+        <div>
+            <strong>Best viewed at 800 x 600 resolution</strong>
+            <br>
+            © Civil Defence and Emergency Management Agency
+        </div>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
